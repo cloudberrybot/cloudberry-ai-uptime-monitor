@@ -10,14 +10,14 @@ module.exports = {
       ],
     },
     {
-      url: 'http://localhost:3333',
+      url: 'https://youtube.com',
       contentRequirements: [
         {
           type: 'text',
-          value: 'google',
+          value: 'youtube',
         },
       ],
     },
   ],
-  interval: 10, //seconds
+  interval: 60, //seconds
 };

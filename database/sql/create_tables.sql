@@ -9,5 +9,6 @@ CREATE TABLE monitor.uptime (
   status varchar(250) NOT NULL,
   response_time real,
   content_requirements varchar(250),
+  created_at timestamp NOT NULL DEFAULT NOW(),
   PRIMARY KEY (id)
 );
