@@ -1,0 +1,64 @@
+{
+  "name": "uptime-monitor-service",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/uptime-monitor-service/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/packages/uptime-monitor-service",
+        "main": "packages/uptime-monitor-service/src/main.ts",
+        "tsConfig": "packages/uptime-monitor-service/tsconfig.app.json",
+        "assets": ["packages/uptime-monitor-service/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "packages/uptime-monitor-service/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "uptime-monitor-service:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "uptime-monitor-service:build:development"
+        },
+        "production": {
+          "buildTarget": "uptime-monitor-service:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/uptime-monitor-service/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/uptime-monitor-service/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

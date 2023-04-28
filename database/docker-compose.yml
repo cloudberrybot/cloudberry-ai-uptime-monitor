@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  postgres:
+    env_file: .env
+    container_name: uptime-database
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - SCHEMA=monitor
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+volumes:
+  db:
+    driver: local

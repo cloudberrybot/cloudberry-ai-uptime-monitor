@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model uptime {
+  id                    String  @id @default(uuid())
+  url                   String  
+  status                String  
+  content_requirements  String 
+  response_time         Float   
+}
