@@ -1,4 +1,4 @@
-# cloudberry-ai-uptime-monitor
+# uptime-monitor
 
 ## Introduction
 
